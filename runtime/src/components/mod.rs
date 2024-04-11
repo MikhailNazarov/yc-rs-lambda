@@ -1,26 +1,24 @@
 #[cfg(feature = "ydb")]
 pub mod ydb;
 
-use std::sync::Arc;
+use std::{ops::Deref, sync::Arc};
 
 use actix_web::{web, FromRequest, HttpRequest};
-use async_trait::async_trait;
+
 use futures::future::{ok, Ready};
 
-use crate::{RuntimeError, RuntimeResult};
-
-#[async_trait]
-pub trait YcComponent
-where
-    Self: Send + Sync,
-{
-    async fn start_up(&self) -> RuntimeResult<()> {
-        Ok(())
-    }
-}
+use crate::RuntimeError;
 
 pub struct Component<T> {
     inner: Arc<T>,
+}
+
+impl<T> Deref for Component<T> {
+    type Target = Arc<T>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
 }
 
 impl<T: Sized + 'static> FromRequest for Component<T> {
