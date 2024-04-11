@@ -1,5 +1,7 @@
 #[cfg(feature = "ydb")]
-pub mod ydb;
+mod ydb;
+#[cfg(feature = "ydb")]
+pub use self::ydb::YdbComponent;
 
 use std::{ops::Deref, sync::Arc};
 

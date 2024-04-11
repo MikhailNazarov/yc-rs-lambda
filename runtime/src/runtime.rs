@@ -7,7 +7,7 @@ use tracing::{info, Level};
 #[derive(Default)]
 pub struct Runtime {
     #[cfg(feature = "ydb")]
-    pub(crate) ydb: Option<crate::ydb::YdbComponent>,
+    pub(crate) ydb: Option<crate::components::YdbComponent>,
 }
 
 pub fn runtime() -> Runtime {
