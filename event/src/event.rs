@@ -1,8 +1,5 @@
 use chrono::{DateTime, Utc};
-use serde::{
-    de::{self, MapAccess, SeqAccess, Visitor},
-    Deserialize,
-};
+use serde::Deserialize;
 use std::vec::Vec;
 
 use crate::details::MessageDetails;
