@@ -5,7 +5,7 @@ use serde::{
     Deserialize,
 };
 
-use crate::{deserialize::deserialize_details, EventMessage, EventMetadata};
+use crate::{events::deserialize::deserialize_details, EventMessage, EventMetadata};
 
 impl<'de> Deserialize<'de> for EventMessage {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>

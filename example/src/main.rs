@@ -5,9 +5,12 @@ async fn main() -> RuntimeResult<()> {
     runtime().use_ydb().run(handler).await
 }
 
-async fn handler(ydb: Component<YdbComponent>) -> RuntimeResult<String> {
+async fn handler(event: Event, ydb: Component<YdbComponent>) -> RuntimeResult<String> {
     let _table = ydb.table_client();
-    // do work with _table client
 
-    Ok("Hello, World!".to_string())
+    for _message in event.messages {
+        // store in db
+    }
+
+    Ok("Complete!".to_string())
 }
