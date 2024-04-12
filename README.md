@@ -14,10 +14,10 @@ async fn main() -> RuntimeResult<()> {
 }
 
 async fn handler(event: Event, ydb: Component<YdbComponent>) -> RuntimeResult<String> {
-    let _table = ydb.table_client();
+    let table = ydb.table_client();
 
-    for _message in event.messages {
-        // store in db
+    for message in event.messages {
+        // store message in db
     }
 
     Ok("Complete!".to_string())
