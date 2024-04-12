@@ -1,16 +1,10 @@
-use actix_web::{
-    web::{self, Json},
-    FromRequest,
-};
+use actix_web::{web::Json, FromRequest};
 use chrono::{DateTime, Utc};
-use futures::{
-    future::{ok, Ready},
-    Future, FutureExt,
-};
+use futures::Future;
 use serde::Deserialize;
 use std::{pin::Pin, vec::Vec};
 
-use crate::{details::MessageDetails, RuntimeError};
+use crate::details::MessageDetails;
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct Event {
